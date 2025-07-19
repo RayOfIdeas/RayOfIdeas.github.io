@@ -48,5 +48,24 @@ function displayRandomQuote() {
     }
 }
 
+// Scroll indicator functionality
+function handleScrollIndicator() {
+    const scrollIndicator = document.getElementById('scrollIndicator');
+    if (!scrollIndicator) return;
+    
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollPercentage = (scrollTop / documentHeight) * 100;
+    
+    if (scrollPercentage >= 90) {
+        scrollIndicator.classList.add('hidden');
+    } else {
+        scrollIndicator.classList.remove('hidden');
+    }
+}
+
 // Display a random quote when the page loads
 document.addEventListener('DOMContentLoaded', displayRandomQuote);
+
+// Add scroll event listener for the scroll indicator
+window.addEventListener('scroll', handleScrollIndicator);
